@@ -7,27 +7,61 @@ import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles((theme) => {
-    button: {
-        margin: theme.spacing(1)
-    }
-})
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
-const Profile = ({profileData, askData}) => {
-    const classes = useStyles();
-    const {newRequestFriend, profile} = useContext(ApiContext);
+const Profile = ({ profileData, askData }) => {
+  const classes = useStyles();
+  const { newRequestFriend, profile } = useContext(ApiContext);
 
-    const newRequest = ()=> {
-        const askUploadData = new FormData();
-        askUploadData.append("askTo", profileData.userpro);
-        newRequestFriend(askUploadData);
-    }
+  const newRequest = () => {
+    const askUploadData = new FormData();
+    askUploadData.append("askTo", profileData.userPro);
+    newRequestFriend(askUploadData);
+  };
 
-    return (
-        <div>
-            
-        </div>
-    )
-}
+  return (
+    <Card style={{ position: "relative", display: "flex", marginBottom: 10 }}>
+      {profileData.img ? (
+        <CardMedia style={{ minWidth: 100 }} image={profileData.img} />
+      ) : (
+        <CardMedia
+          style={{ minWidth: 100 }}
+          // image="http://127.0.0.1:8000/media/image/null.png"
+            image=""
+        />
+      )}
 
-export default Profile
+      <CardContent style={{ padding: 5 }}>
+        <Typography variant="h6">{profileData.nickName}</Typography>
+        <Typography>{profileData.created_on}</Typography>
+        {!askData[0] && profile.id ? (
+          <Button
+            size="small"
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            onClick={() => newRequest()}
+          >
+            Ask as friend
+          </Button>
+        ) : (
+          <Button
+            size="small"
+            className={classes.button}
+            variant="contained"
+            color="primary"
+            disabled
+          >
+            Ask as friend
+          </Button>
+        )}
+      </CardContent>
+    </Card>
+  );
+};
+
+export default Profile;

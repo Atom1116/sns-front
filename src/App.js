@@ -1,34 +1,39 @@
-import React from 'react';
-import "./App.css";
+import React from "react";
+// import "./App.css";
 
-import { createTheme } from "@material-ui/core/styles";
-import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider} from "@material-ui/core/styles";
 import indigo from "@material-ui/core/colors/indigo";
-import Navbar from './components/Navbar';
-import Main from './components/Main';
+import Navbar from "./components/Navbar";
+import ApiContextProvider from "./context/ApiContext";
+import Main from "./new_components/Main";
+// import Main from "./components/Main";
 
-
+// アプリテーマの定義
 const theme = createTheme({
   palette: {
-    primary: indigo,
+    primary: {
+      main: "#93c47d"
+    },
     secondary: {
-      main: "#f44336",
+      main: "#292F38",
     },
   },
   typography: {
-    fontFamily: "Comic Neue",
+    fontFamily: "Roboto",
+    fontSize: 16,
   },
 });
 
 function App() {
-    return (
-        <MuiThemeProvider theme={theme}>
-            <Navbar />
-            <div className="container">
-            <Main/>
-            </div>
-        </MuiThemeProvider>
-    );
+  return (
+    <ApiContextProvider>
+      <ThemeProvider theme={theme}>
+        <Navbar />
+        <Main/>
+      </ThemeProvider>
+    </ApiContextProvider>
+  );
 }
 
 export default App;
