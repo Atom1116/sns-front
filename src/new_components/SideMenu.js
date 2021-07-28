@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     link_area: {
+        width: 200,
         "& li": {
             listStyle: "none",
             marginTop: 10,

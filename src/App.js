@@ -1,5 +1,5 @@
 import React from "react";
-// import "./App.css";
+import "./NewApp.css";
 
 import { createTheme } from '@material-ui/core/styles';
 import { ThemeProvider} from "@material-ui/core/styles";
@@ -23,6 +23,7 @@ const theme = createTheme({
     fontFamily: "Roboto",
     fontSize: 16,
   },
+  spacing: 8
 });
 
 function App() {
@@ -30,7 +31,9 @@ function App() {
     <ApiContextProvider>
       <ThemeProvider theme={theme}>
         <Navbar />
-        <Main/>
+        {/* <div className="main">
+          <Main/>
+        </div> */}
       </ThemeProvider>
     </ApiContextProvider>
   );

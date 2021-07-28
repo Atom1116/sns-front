@@ -13,17 +13,8 @@ const useStyles = makeStyles((theme) => ({
   bg: {
     marginRight: theme.spacing(1),
   },
-  in_bg: {
-    fontSize: '0.2rem' ,
-    height: 20,
-  },
   title: {
     flexGrow: 1,
-  },
-
-  exit: {
-    height: 500,
-    color: 'red'
   },
 
   signOut:{
@@ -35,7 +26,6 @@ const useStyles = makeStyles((theme) => ({
     outline: "none",
     cursor: "pointer",
   } 
-
 }));
 
 const Navbar = (props) => {
@@ -50,15 +40,14 @@ const Navbar = (props) => {
 
 
   return (
-    <AppBar position="static">
+    <AppBar position="fixed">
+      
       <Toolbar>
-        <Typography variant="h4" align="left" className={classes.title}>
+        <Typography variant="h5" align="left" className={classes.title}>
           SNS App
         </Typography>
         <Badge
           className={classes.bg}
-          // badgeContent={10}
-          classes={{badge: classes.in_bg}}
           badgeContent={
             askList.filter((ask) => {
               return (
@@ -71,10 +60,10 @@ const Navbar = (props) => {
           }
           color="secondary"
         >
-          <NotificationsIcon style={{ fontSize: 24 }}/>
+          <NotificationsIcon/>
         </Badge>
         <button className={classes.signOut} onClick={Logout()}>
-          <FiLogOut style={{ fontSize: 24 }}/>
+          <FiLogOut/>
         </button>
       </Toolbar>
     </AppBar>
